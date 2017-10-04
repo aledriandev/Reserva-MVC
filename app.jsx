@@ -1,15 +1,10 @@
 class Model {
   constructor () {
-    this.invitedList = [{
-      name: 'Ale',
-      confirm: false,
-      id: 0,
-      class: ''
-    }];
+    this.invitedList = [];
     this.invitedConfirm = [];
     this.invited = '';
     this.callback = null;
-    this.id = ;
+    this.id = 0;
   }
   
   subscribe(render) {
@@ -17,6 +12,9 @@ class Model {
   }
 
   addInvited () {
+
+    // if (this.invited != '' || this.invited != undefined) {
+    // }
     this.invitedList.push({
       name: this.invited,
       confirm: false,
@@ -58,6 +56,9 @@ class Model {
     // console.log(e.target.parentNode.id);
     // let index = parseInt(e.target.parentNode.id);
     this.invitedList.splice(index,1);
+    if (this.invitedList[index].confirm) {
+      this.invitedConfirm.pop();
+    }
     this.callback();
   }
   
