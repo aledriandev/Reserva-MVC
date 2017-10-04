@@ -4,7 +4,9 @@ class Model {
       name: '',
       confirm: false,
     };
-    this.invitedList = [];
+    this.invitedList = [{
+      name: 'Ale',
+    }];
     this.callback = null;
   }
   
@@ -16,9 +18,9 @@ class Model {
 
 const Rsvp = ({model}) => {
   const getList = () => {
-    return model.invitedList.map((inivted,index) => {
+    return model.invitedList.map((invited,index) => {
       return (<li key={index}>
-          {invited}
+          {invited.name}
           <label >Confirmed</label>
           <input type="checkbox" name id />
           <button>Remove</button>
@@ -37,7 +39,7 @@ const Rsvp = ({model}) => {
         </header>
         <div className="main">
           <h2>Invitees</h2>
-          <ul id="invitedList" />
+          <ul>{getList()}</ul>
         </div>
       </div>
 
