@@ -9,7 +9,7 @@ class Model {
     this.invitedConfirm = [];
     this.invited = '';
     this.callback = null;
-    this.id = 1;
+    this.id = ;
   }
   
   subscribe(render) {
@@ -61,7 +61,6 @@ class Model {
     this.callback();
   }
   
-
 } 
   
 
@@ -76,6 +75,11 @@ const Rsvp = ({model}) => {
             </li>);
     });
   }
+
+  const attending = model.invitedConfirm.length;
+  const unconfirmed = model.invitedList.length - attending;
+  const total = model.invitedList.length;
+
   return (
     <div>
         <header>
@@ -88,6 +92,11 @@ const Rsvp = ({model}) => {
         </header>
         <div className="main">
           <h2>Invitees</h2>
+          <div className='result'>
+            <p>Attending: <b>{attending}</b></p>
+            <p>Unconfirmed: <b>{unconfirmed}</b></p>
+            <p>Total: <b></b>{total}</p>
+          </div>
           <ul>{getList()}</ul>
         </div>
       </div>
